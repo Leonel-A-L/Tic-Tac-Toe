@@ -1,6 +1,8 @@
 const restartBtn = document.getElementById('restartBtn')
 const playerText = document.getElementById('playerText')
 const boxes = Array.from(document.getElementsByClassName('box')) //get the element in an Array
+let winnerIndicator = getComputedStyle(document.body).getPropertyValue('--winning-blocks')
+let drawIndicator = getComputedStyle(document.body).getPropertyValue('--draw-indicator')
 
 const O_choice = 'O'
 const X_choice = 'X'
@@ -34,11 +36,15 @@ function boxClicked(e) {
 
         if(playerHasWon() !==false){    //checks if player has not won            
             if(currentPlayer == X_choice){   //checks if once the player has won and if the choice was X makes this function) 
-                playerText.innerHTML = `${currentPlayer} has won!`                                                          
+                playerText.innerHTML = `${currentPlayer} has won!`     
+                let winning_blocks = playerHasWon()                
+                winning_blocks.map(box => boxes[box].style.backgroundColor=winnerIndicator)
             return
             }
             if(currentPlayer == O_choice){  //checks if once the player has won and if the choice was O makes this function) 
-                playerText.innerHTML = `${currentPlayer} has won!`                     
+                playerText.innerHTML = `${currentPlayer} has won!`  
+                let winning_blocks = playerHasWon()    
+                winning_blocks.map(box => boxes[box].style.backgroundColor=winnerIndicator)               
             return
             }
         }
@@ -47,6 +53,11 @@ function boxClicked(e) {
         let player = currentPlayer
         playerText.innerHTML = `player ${player} turn`             
     }         
+    if(count_plays === 9){   
+        playerText.innerHTML = 'Draw Game'
+        boxes.forEach(box => box.style.color = drawIndicator) //if no condtion is met and all spaces have been filled is a draw
+        drawText.innerHTML = `Draw's: ${drawScore}`
+    }
 }
 
 
