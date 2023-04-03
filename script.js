@@ -71,3 +71,19 @@ function playerHasWon () {
     }
     return false
 }
+
+restartBtn.addEventListener('click',restart)
+
+function restart() {  //restarts game by making everything blank
+    spaces.fill(null)
+    
+    boxes.forEach( box => {
+        box.innerText = ''
+        box.style.backgroundColor = ''
+        box.style.color = '#8B008B'
+    })
+    playerText.innerHTML = `player x turn`
+
+    currentPlayer = X_choice
+}
+startGame()
