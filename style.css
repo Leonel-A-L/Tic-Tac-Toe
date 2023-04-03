@@ -79,3 +79,10 @@ button:hover {
     cursor: pointer;
     transform: translateY(-2px);
 }
+
+.scores{
+    font-size: 25px;    
+    position: absolute;
+    left: 100px;
+    align-content: center;
+}
