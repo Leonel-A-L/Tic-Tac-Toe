@@ -30,35 +30,47 @@ const startGame = () => {
 function boxClicked(e) {
     const id = e.target.id //notifies once its been clicked with id
 
-    if(!spaces[id]){
+    if(!spaces[id] && count_plays < 9){
         spaces[id] = currentPlayer
         e.target.innerText = currentPlayer
 
         if(playerHasWon() !==false){    //checks if player has not won            
             if(currentPlayer == X_choice){   //checks if once the player has won and if the choice was X makes this function) 
-                playerText.innerHTML = `${currentPlayer} has won!`     
-                let winning_blocks = playerHasWon()                
-                winning_blocks.map(box => boxes[box].style.backgroundColor=winnerIndicator)
+                playerText.innerHTML = `${currentPlayer} has won!`
+            let winning_blocks = playerHasWon()
+            count_plays = 10
+            winning_blocks.map(box => boxes[box].style.backgroundColor=winnerIndicator)
+            scoreX++            
+            X_ScoreText.innerHTML = `player x score: ${scoreX}`           
+            }
+
             return
             }
             if(currentPlayer == O_choice){  //checks if once the player has won and if the choice was O makes this function) 
-                playerText.innerHTML = `${currentPlayer} has won!`  
-                let winning_blocks = playerHasWon()    
-                winning_blocks.map(box => boxes[box].style.backgroundColor=winnerIndicator)               
+                playerText.innerHTML = `${currentPlayer} has won!`
+            let winning_blocks = playerHasWon()
+            count_plays = 10
+            winning_blocks.map(box => boxes[box].style.backgroundColor=winnerIndicator)
+            scoreO++            
+            O_ScoreText.innerHTML = `player O score: ${scoreO}`
+           
             return
             }
+
         }
-        
+        count_plays++
         currentPlayer = currentPlayer == X_choice ? O_choice : X_choice  //changes null to text of X or O choice 
         let player = currentPlayer
         playerText.innerHTML = `player ${player} turn`             
-    }         
+    }
     if(count_plays === 9){   
         playerText.innerHTML = 'Draw Game'
         boxes.forEach(box => box.style.color = drawIndicator) //if no condtion is met and all spaces have been filled is a draw
-        drawText.innerHTML = `Draw's: ${drawScore}`
-    }
-}
+        drawScore++            
+        drawText.innerHTML = `Draw's: ${drawScore}`     
+        
+    }    
+
 
 
 function playerHasWon () {
