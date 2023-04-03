@@ -1,0 +1,81 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    
+}
+
+:root{
+    --purple:#8B008B;
+    --winning-blocks:#FFD700;
+    --draw-indicator:#FF0000;
+}
+
+body{
+    color: var(--purple);
+    font-family:Permanent Marker;
+    background-color: #1e2021;
+    
+}
+h1 {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 20px;
+}
+
+h1,h2 {
+    text-transform: uppercase;
+    font-size: 60px;   
+    
+}
+
+.container {
+    padding: 40px;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;    
+    
+}
+
+#gameBoard{
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0px;
+}
+
+.box {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--orange);
+    font-size: 120px;
+    border-right: 2px solid;
+    border-bottom: 2px solid;
+    
+}
+.box:nth-child(3n) {    
+    border-right: none;
+}
+.box:nth-child(6) ~ .box {
+    border-bottom: none;
+} 
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: var(--purple);
+    color: #ffffff;
+    border-color: var(--purple);
+    font-size: 18px;
+    transition: 200ms transform;
+    font-weight: 600;
+}
+button:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+}
