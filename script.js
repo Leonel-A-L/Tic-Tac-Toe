@@ -20,6 +20,36 @@ const winningConditions = [
     [2,4,6],   
 ]
 
+const startGame = () => {
+    boxes.forEach(box => box.addEventListener('click', boxClicked,))    //game starts once its been clicked
+    
+}
+
+function boxClicked(e) {
+    const id = e.target.id //notifies once its been clicked with id
+
+    if(!spaces[id]){
+        spaces[id] = currentPlayer
+        e.target.innerText = currentPlayer
+
+        if(playerHasWon() !==false){    //checks if player has not won            
+            if(currentPlayer == X_choice){   //checks if once the player has won and if the choice was X makes this function) 
+                playerText.innerHTML = `${currentPlayer} has won!`                                                          
+            return
+            }
+            if(currentPlayer == O_choice){  //checks if once the player has won and if the choice was O makes this function) 
+                playerText.innerHTML = `${currentPlayer} has won!`                     
+            return
+            }
+        }
+        
+        currentPlayer = currentPlayer == X_choice ? O_choice : X_choice  //changes null to text of X or O choice 
+        let player = currentPlayer
+        playerText.innerHTML = `player ${player} turn`             
+    }         
+}
+
+
 function playerHasWon () {
     for(const condition of winningConditions){
         let [a,b,c] = condition  // a,b,c are the id's in the colum array
