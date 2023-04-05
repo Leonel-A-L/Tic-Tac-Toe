@@ -6,6 +6,8 @@ let drawIndicator = getComputedStyle(document.body).getPropertyValue('--draw-ind
 let X_ScoreText = document.getElementById('X_playerScore')
 let O_ScoreText = document.getElementById('O_playerScore')
 let drawText = document.getElementById('drawScore')
+let playerSelect = document.getElementById('playerSelect')
+
 
 let scoreX = 0
 let scoreO = 0
@@ -29,10 +31,18 @@ const winningConditions = [
     [2,4,6],   
 ]
 
-const startGame = () => {
+function playerSelection(){
+    playerSelect.addEventListener('click',player)
+}
+
+function player(){
+    playerSelect.style.visibility='hidden'
+}
+ function startGame () {
+    if(playerSelect == 'hidden'){
     boxes.forEach(box => box.addEventListener('click', boxClicked,))    //game starts once its been clicked
     
-}
+}}
 
 function boxClicked(e) {
     const id = e.target.id //notifies once its been clicked with id
@@ -120,6 +130,7 @@ function restart() {  //restarts game by making everything blank
 
     currentPlayer = X_choice
 }
+playerSelection()
 startGame()
 
 

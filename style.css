@@ -9,6 +9,7 @@
     --purple:#8B008B;
     --winning-blocks:#FFD700;
     --draw-indicator:#FF0000;
+    
 }
 
 body{
@@ -21,7 +22,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 h1,h2 {
@@ -86,3 +87,17 @@ button:hover {
     left: 100px;
     align-content: center;
 }
+
+#playerSelect{
+    display: flex;
+    justify-content: center;
+    visibility: visible;
+
+}
+
+.PvePvp{       
+    margin: 20px;   
+    padding-right: 11px;
+    padding-left: 11px;
+}
+
